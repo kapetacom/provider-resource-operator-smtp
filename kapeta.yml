@@ -1,6 +1,6 @@
 kind: core/resource-type-operator
 metadata:
-  name: kapeta/resource-type-smtp
+  name: kapeta/resource-type-smtp-client
   title: E-Mail (SMTP)
   description: Send e-mails from your blocks
 spec:
