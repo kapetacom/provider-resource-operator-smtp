@@ -1,0 +1,27 @@
+kind: core/resource-type-operator
+metadata:
+  name: kapeta/resource-type-smtp-client
+  title: E-Mail (SMTP)
+  description: Send e-mails from your blocks
+spec:
+  ports:
+    - type: smtp
+  local:
+    image: registry.gitlab.com/sorenmat/gosmtpd:20230608-0726
+    health:
+      cmd: wget --no-verbose --tries=1 --spider http://localhost:8000/status || exit 1
+      interval: 5000
+    env:
+      WEBPORT: 8000
+      PORT: 2525
+    cmd:
+      - /gosmtpd
+      - --hostname="0.0.0.0"
+    ports:
+      smtp:
+        port: 2525
+        type: tcp
+      http:
+        port: 8000
+        type: tcp
+
