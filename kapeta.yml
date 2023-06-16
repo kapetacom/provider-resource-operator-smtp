@@ -12,8 +12,8 @@ spec:
       cmd: wget --no-verbose --tries=1 --spider http://localhost:8000/status || exit 1
       interval: 5000
     env:
-      WEBPORT: 8000
-      PORT: 2525
+      WEBPORT: "8000"
+      PORT: "2525"
     cmd:
       - /gosmtpd
       - --hostname="0.0.0.0"
