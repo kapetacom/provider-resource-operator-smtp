@@ -3,7 +3,11 @@ metadata:
   name: kapeta/resource-type-smtp-client
   title: E-Mail (SMTP)
   description: Send e-mails from your blocks
+  visibility: public
 spec:
+  icon:
+    type: url
+    value: https://storage.googleapis.com/kapeta-public-cdn/icons/mail.svg
   ports:
     - type: smtp
   local:
