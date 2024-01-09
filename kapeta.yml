@@ -11,16 +11,15 @@ spec:
   ports:
     - type: smtp
   local:
-    image: registry.gitlab.com/sorenmat/gosmtpd:20230608-0726
+    image: maildev/maildev:2.1.0
     health:
-      cmd: wget --no-verbose --tries=1 --spider http://localhost:8000/status || exit 1
+      cmd: wget --no-verbose --tries=1 --spider http://localhost:8000/healthz || exit 1
       interval: 5000
-    env:
-      WEBPORT: "8000"
-      PORT: "2525"
     cmd:
-      - /gosmtpd
-      - --hostname="0.0.0.0"
+      - --web
+      - "8000"
+      - --smtp
+      - "2525"
     ports:
       smtp:
         port: 2525
